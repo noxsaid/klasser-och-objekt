@@ -1,7 +1,11 @@
-class student
+class Student
 {
-    static void Main()
+    public string Name { get; set; } = "";
+    public List<Course> Courses { get; set; } = new List<Course>();
+    public void Join(Course course)
     {
-        // your code runs here
+        Courses.Add(course);
+        course.Enroll(this);
     }
 }
+
