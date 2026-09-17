@@ -2,17 +2,17 @@ class Course
 {
     public string Name { get; set; } = "";
     public int MaxSeats { get; set; }
-    public List<Student> Student { get; set; } = new List<Student>();
+    public List<Student> Students { get; set; } = new List<Student>();
 
     public void Enroll(Student student)
     {
-        if (Student.Contains(student))
+        if (Students.Contains(student))
         {
             Console.WriteLine($"{student.Name} is already enrolled in {Name}.");
         }
-        else if (Student.Count < MaxSeats)
+        else if (Students.Count < MaxSeats)
         {
-            Student.Add(student);
+            Students.Add(student);
             if (!student.Courses.Contains(this))
             {
                 student.Courses.Add(this);
@@ -26,9 +26,9 @@ class Course
     }
     public void Remove (Student student)
     {
-        if (Student.Contains(student))
+        if (Students.Contains(student))
         {
-            Student.Remove(student);
+            Students.Remove(student);
             if(student.Courses.Contains(this))
             {
                 student.Courses.Remove(this);
@@ -40,14 +40,14 @@ class Course
     public void RollCall()
     {
         Console.WriteLine("Attending students:"); 
-        foreach (Student student in Student)
+        foreach (Student student in Students)
         {
             Console.WriteLine(student.Name);
         }
     }
     public override string ToString()
     {
-        return $"{Name} ({Student.Count}/{MaxSeats} places)";
+        return $"{Name} ({Students.Count}/{MaxSeats} places)";
     }
 }
 
